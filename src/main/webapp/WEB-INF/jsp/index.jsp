@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>title</title>
+<title>메인페이지</title>
 <link rel="stylesheet" href="css/screen.css" type="text/css" />
 </head>
 <body>
