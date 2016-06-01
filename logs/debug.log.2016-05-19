@@ -1,0 +1,80 @@
+[2016-05-19 14:54:23,086]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ooo Using Connection [jdbc:oracle:thin:@127.0.0.1:1521:XE, UserName=JAVA, Oracle JDBC driver]
+[2016-05-19 14:54:23,099]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ==>  Preparing: SELECT email, passwd, name, mobile FROM member WHERE email = ? AND passwd = ? 
+[2016-05-19 14:54:23,229]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ==> Parameters: captain@heist.com(String), 1111(String)
+[2016-05-19 14:54:23,355]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - <==      Total: 1
+[2016-05-19 14:54:23,508]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ooo Using Connection [jdbc:oracle:thin:@127.0.0.1:1521:XE, UserName=JAVA, Oracle JDBC driver]
+[2016-05-19 14:54:23,509]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ==>  Preparing: SELECT count(*) FROM article WHERE boardcd = ? 
+[2016-05-19 14:54:23,510]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ==> Parameters: free(String)
+[2016-05-19 14:54:23,552]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - <==      Total: 1
+[2016-05-19 14:54:23,554]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ooo Using Connection [jdbc:oracle:thin:@127.0.0.1:1521:XE, UserName=JAVA, Oracle JDBC driver]
+[2016-05-19 14:54:23,554]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ==>  Preparing: SELECT articleno, title, regdate, hit, name, attachfileNum, commentNum FROM ( SELECT rownum r,a.* FROM ( SELECT a.articleno, a.title, a.regdate, a.hit, m.name, COUNT(DISTINCT(f.attachfileno)) attachfileNum, COUNT(DISTINCT(c.commentno)) commentNum FROM article a, attachfile f, comments c, member m WHERE a.articleno = f.articleno(+) AND a.articleno = c.articleno(+) AND a.email = m.email(+) AND a.boardcd = ? GROUP BY a.articleno, title, a.regdate, hit, m.name ORDER BY articleno DESC ) a ) WHERE r BETWEEN ? AND ? 
+[2016-05-19 14:54:23,555]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ==> Parameters: free(String), 1(String), 10(String)
+[2016-05-19 14:54:23,686]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - <==      Total: 1
+[2016-05-19 14:54:23,688]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ooo Using Connection [jdbc:oracle:thin:@127.0.0.1:1521:XE, UserName=JAVA, Oracle JDBC driver]
+[2016-05-19 14:54:23,689]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ==>  Preparing: SELECT boardNm FROM board WHERE boardcd = ? 
+[2016-05-19 14:54:23,690]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ==> Parameters: free(String)
+[2016-05-19 14:54:23,698]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - <==      Total: 1
+[2016-05-19 14:54:29,793]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ooo Using Connection [jdbc:oracle:thin:@127.0.0.1:1521:XE, UserName=JAVA, Oracle JDBC driver]
+[2016-05-19 14:54:29,794]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ==>  Preparing: UPDATE article SET hit = hit + 1 WHERE articleno = ? 
+[2016-05-19 14:54:29,797]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ==> Parameters: 2(Integer)
+[2016-05-19 14:54:29,825]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - <==    Updates: 1
+[2016-05-19 14:54:29,827]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ooo Using Connection [jdbc:oracle:thin:@127.0.0.1:1521:XE, UserName=JAVA, Oracle JDBC driver]
+[2016-05-19 14:54:29,828]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ==>  Preparing: SELECT articleno, title, content, a.email, NVL(name, 'Anonymous') name, hit, regdate FROM article a, member m WHERE a.email = m.email(+) AND articleno = ? 
+[2016-05-19 14:54:29,828]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ==> Parameters: 2(Integer)
+[2016-05-19 14:54:29,850]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - <==      Total: 1
+[2016-05-19 14:54:29,852]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ooo Using Connection [jdbc:oracle:thin:@127.0.0.1:1521:XE, UserName=JAVA, Oracle JDBC driver]
+[2016-05-19 14:54:29,853]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ==>  Preparing: SELECT attachfileno, filename, filetype, filesize, articleno, email FROM attachfile WHERE articleno = ? ORDER BY attachfileno 
+[2016-05-19 14:54:29,853]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ==> Parameters: 2(Integer)
+[2016-05-19 14:54:29,857]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - <==      Total: 0
+[2016-05-19 14:54:29,859]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ooo Using Connection [jdbc:oracle:thin:@127.0.0.1:1521:XE, UserName=JAVA, Oracle JDBC driver]
+[2016-05-19 14:54:29,860]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ==>  Preparing: SELECT articleno, title FROM (SELECT rownum r,a.* FROM (SELECT articleno, title FROM article WHERE boardCd = ? AND articleno > ? ORDER BY articleno) a) WHERE r = 1 
+[2016-05-19 14:54:29,860]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ==> Parameters: free(String), 2(String)
+[2016-05-19 14:54:29,902]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - <==      Total: 0
+[2016-05-19 14:54:29,907]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ooo Using Connection [jdbc:oracle:thin:@127.0.0.1:1521:XE, UserName=JAVA, Oracle JDBC driver]
+[2016-05-19 14:54:29,908]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ==>  Preparing: SELECT articleno, title FROM (SELECT rownum r,a.* FROM (SELECT articleno, title FROM article WHERE boardCd = ? AND articleno < ? ORDER BY articleno DESC) a) WHERE r = 1 
+[2016-05-19 14:54:29,908]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ==> Parameters: free(String), 2(String)
+[2016-05-19 14:54:29,917]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - <==      Total: 0
+[2016-05-19 14:54:29,920]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ooo Using Connection [jdbc:oracle:thin:@127.0.0.1:1521:XE, UserName=JAVA, Oracle JDBC driver]
+[2016-05-19 14:54:29,921]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ==>  Preparing: SELECT commentno, articleno, c.email, NVL(name,'Anonymous') name, memo, regdate FROM comments c, member m WHERE c.email = m.email(+) AND articleno = ? ORDER BY commentno DESC 
+[2016-05-19 14:54:29,922]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ==> Parameters: 2(Integer)
+[2016-05-19 14:54:29,932]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - <==      Total: 1
+[2016-05-19 14:54:29,934]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ooo Using Connection [jdbc:oracle:thin:@127.0.0.1:1521:XE, UserName=JAVA, Oracle JDBC driver]
+[2016-05-19 14:54:29,935]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ==>  Preparing: SELECT boardNm FROM board WHERE boardcd = ? 
+[2016-05-19 14:54:29,935]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ==> Parameters: free(String)
+[2016-05-19 14:54:29,937]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - <==      Total: 1
+[2016-05-19 14:54:33,197]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ooo Using Connection [jdbc:oracle:thin:@127.0.0.1:1521:XE, UserName=JAVA, Oracle JDBC driver]
+[2016-05-19 14:54:33,198]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ==>  Preparing: SELECT count(*) FROM article WHERE boardcd = ? 
+[2016-05-19 14:54:33,198]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ==> Parameters: free(String)
+[2016-05-19 14:54:33,199]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - <==      Total: 1
+[2016-05-19 14:54:33,201]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ooo Using Connection [jdbc:oracle:thin:@127.0.0.1:1521:XE, UserName=JAVA, Oracle JDBC driver]
+[2016-05-19 14:54:33,201]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ==>  Preparing: SELECT articleno, title, regdate, hit, name, attachfileNum, commentNum FROM ( SELECT rownum r,a.* FROM ( SELECT a.articleno, a.title, a.regdate, a.hit, m.name, COUNT(DISTINCT(f.attachfileno)) attachfileNum, COUNT(DISTINCT(c.commentno)) commentNum FROM article a, attachfile f, comments c, member m WHERE a.articleno = f.articleno(+) AND a.articleno = c.articleno(+) AND a.email = m.email(+) AND a.boardcd = ? GROUP BY a.articleno, title, a.regdate, hit, m.name ORDER BY articleno DESC ) a ) WHERE r BETWEEN ? AND ? 
+[2016-05-19 14:54:33,202]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ==> Parameters: free(String), 1(String), 10(String)
+[2016-05-19 14:54:33,205]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - <==      Total: 1
+[2016-05-19 14:54:33,207]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ooo Using Connection [jdbc:oracle:thin:@127.0.0.1:1521:XE, UserName=JAVA, Oracle JDBC driver]
+[2016-05-19 14:54:33,208]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ==>  Preparing: SELECT boardNm FROM board WHERE boardcd = ? 
+[2016-05-19 14:54:33,209]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ==> Parameters: free(String)
+[2016-05-19 14:54:33,210]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - <==      Total: 1
+[2016-05-19 14:54:35,629]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ooo Using Connection [jdbc:oracle:thin:@127.0.0.1:1521:XE, UserName=JAVA, Oracle JDBC driver]
+[2016-05-19 14:54:35,629]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ==>  Preparing: SELECT boardNm FROM board WHERE boardcd = ? 
+[2016-05-19 14:54:35,630]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - ==> Parameters: free(String)
+[2016-05-19 14:54:35,632]DEBUG [http-bio-8385-exec-11] (JakartaCommonsLoggingImpl.java:46) - <==      Total: 1
+[2016-05-19 14:55:12,204]DEBUG [http-bio-8385-exec-19] (JakartaCommonsLoggingImpl.java:46) - ooo Using Connection [jdbc:oracle:thin:@127.0.0.1:1521:XE, UserName=JAVA, Oracle JDBC driver]
+[2016-05-19 14:55:12,207]DEBUG [http-bio-8385-exec-19] (JakartaCommonsLoggingImpl.java:46) - ==>  Preparing: SELECT seq_article.nextval FROM dual 
+[2016-05-19 14:55:12,208]DEBUG [http-bio-8385-exec-19] (JakartaCommonsLoggingImpl.java:46) - ==> Parameters: 
+[2016-05-19 14:55:12,247]DEBUG [http-bio-8385-exec-19] (JakartaCommonsLoggingImpl.java:46) - <==      Total: 1
+[2016-05-19 14:55:12,249]DEBUG [http-bio-8385-exec-19] (JakartaCommonsLoggingImpl.java:46) - ooo Using Connection [jdbc:oracle:thin:@127.0.0.1:1521:XE, UserName=JAVA, Oracle JDBC driver]
+[2016-05-19 14:55:12,250]DEBUG [http-bio-8385-exec-19] (JakartaCommonsLoggingImpl.java:46) - ==>  Preparing: INSERT INTO article (articleNo, boardCd, title, content, email, hit, regdate) VALUES (?, ?, ?, ?, ?, 0, sysdate) 
+[2016-05-19 14:55:12,250]DEBUG [http-bio-8385-exec-19] (JakartaCommonsLoggingImpl.java:46) - ==> Parameters: 21(Integer), free(String), 테스트2(String), 테스트2(String), captain@heist.com(String)
+[2016-05-19 14:55:12,314]DEBUG [http-bio-8385-exec-19] (JakartaCommonsLoggingImpl.java:46) - <==    Updates: 1
+[2016-05-19 14:55:12,333]DEBUG [http-bio-8385-exec-19] (JakartaCommonsLoggingImpl.java:46) - ooo Using Connection [jdbc:oracle:thin:@127.0.0.1:1521:XE, UserName=JAVA, Oracle JDBC driver]
+[2016-05-19 14:55:12,334]DEBUG [http-bio-8385-exec-19] (JakartaCommonsLoggingImpl.java:46) - ==>  Preparing: SELECT count(*) FROM article WHERE boardcd = ? 
+[2016-05-19 14:55:12,335]DEBUG [http-bio-8385-exec-19] (JakartaCommonsLoggingImpl.java:46) - ==> Parameters: free(String)
+[2016-05-19 14:55:12,340]DEBUG [http-bio-8385-exec-19] (JakartaCommonsLoggingImpl.java:46) - <==      Total: 1
+[2016-05-19 14:55:12,343]DEBUG [http-bio-8385-exec-19] (JakartaCommonsLoggingImpl.java:46) - ooo Using Connection [jdbc:oracle:thin:@127.0.0.1:1521:XE, UserName=JAVA, Oracle JDBC driver]
+[2016-05-19 14:55:12,343]DEBUG [http-bio-8385-exec-19] (JakartaCommonsLoggingImpl.java:46) - ==>  Preparing: SELECT articleno, title, regdate, hit, name, attachfileNum, commentNum FROM ( SELECT rownum r,a.* FROM ( SELECT a.articleno, a.title, a.regdate, a.hit, m.name, COUNT(DISTINCT(f.attachfileno)) attachfileNum, COUNT(DISTINCT(c.commentno)) commentNum FROM article a, attachfile f, comments c, member m WHERE a.articleno = f.articleno(+) AND a.articleno = c.articleno(+) AND a.email = m.email(+) AND a.boardcd = ? GROUP BY a.articleno, title, a.regdate, hit, m.name ORDER BY articleno DESC ) a ) WHERE r BETWEEN ? AND ? 
+[2016-05-19 14:55:12,344]DEBUG [http-bio-8385-exec-19] (JakartaCommonsLoggingImpl.java:46) - ==> Parameters: free(String), 1(String), 10(String)
+[2016-05-19 14:55:12,348]DEBUG [http-bio-8385-exec-19] (JakartaCommonsLoggingImpl.java:46) - <==      Total: 2
+[2016-05-19 14:55:12,350]DEBUG [http-bio-8385-exec-19] (JakartaCommonsLoggingImpl.java:46) - ooo Using Connection [jdbc:oracle:thin:@127.0.0.1:1521:XE, UserName=JAVA, Oracle JDBC driver]
+[2016-05-19 14:55:12,351]DEBUG [http-bio-8385-exec-19] (JakartaCommonsLoggingImpl.java:46) - ==>  Preparing: SELECT boardNm FROM board WHERE boardcd = ? 
+[2016-05-19 14:55:12,351]DEBUG [http-bio-8385-exec-19] (JakartaCommonsLoggingImpl.java:46) - ==> Parameters: free(String)
+[2016-05-19 14:55:12,352]DEBUG [http-bio-8385-exec-19] (JakartaCommonsLoggingImpl.java:46) - <==      Total: 1

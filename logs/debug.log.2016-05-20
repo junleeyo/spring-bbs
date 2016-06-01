@@ -1,0 +1,36 @@
+[2016-05-20 20:32:01,153]DEBUG [http-bio-8385-exec-1] (JakartaCommonsLoggingImpl.java:46) - ooo Using Connection [jdbc:oracle:thin:@127.0.0.1:1521:XE, UserName=JAVA, Oracle JDBC driver]
+[2016-05-20 20:32:01,173]DEBUG [http-bio-8385-exec-1] (JakartaCommonsLoggingImpl.java:46) - ==>  Preparing: SELECT count(*) FROM article WHERE boardcd = ? 
+[2016-05-20 20:32:01,198]DEBUG [http-bio-8385-exec-1] (JakartaCommonsLoggingImpl.java:46) - ==> Parameters: free(String)
+[2016-05-20 20:32:01,335]DEBUG [http-bio-8385-exec-1] (JakartaCommonsLoggingImpl.java:46) - <==      Total: 1
+[2016-05-20 20:32:01,348]DEBUG [http-bio-8385-exec-1] (JakartaCommonsLoggingImpl.java:46) - ooo Using Connection [jdbc:oracle:thin:@127.0.0.1:1521:XE, UserName=JAVA, Oracle JDBC driver]
+[2016-05-20 20:32:01,349]DEBUG [http-bio-8385-exec-1] (JakartaCommonsLoggingImpl.java:46) - ==>  Preparing: SELECT articleno, title, regdate, hit, name, attachfileNum, commentNum FROM ( SELECT rownum r,a.* FROM ( SELECT a.articleno, a.title, a.regdate, a.hit, m.name, COUNT(DISTINCT(f.attachfileno)) attachfileNum, COUNT(DISTINCT(c.commentno)) commentNum FROM article a, attachfile f, comments c, member m WHERE a.articleno = f.articleno(+) AND a.articleno = c.articleno(+) AND a.email = m.email(+) AND a.boardcd = ? GROUP BY a.articleno, title, a.regdate, hit, m.name ORDER BY articleno DESC ) a ) WHERE r BETWEEN ? AND ? 
+[2016-05-20 20:32:01,351]DEBUG [http-bio-8385-exec-1] (JakartaCommonsLoggingImpl.java:46) - ==> Parameters: free(String), 1(String), 10(String)
+[2016-05-20 20:32:01,710]DEBUG [http-bio-8385-exec-1] (JakartaCommonsLoggingImpl.java:46) - <==      Total: 2
+[2016-05-20 20:32:01,713]DEBUG [http-bio-8385-exec-1] (JakartaCommonsLoggingImpl.java:46) - ooo Using Connection [jdbc:oracle:thin:@127.0.0.1:1521:XE, UserName=JAVA, Oracle JDBC driver]
+[2016-05-20 20:32:01,714]DEBUG [http-bio-8385-exec-1] (JakartaCommonsLoggingImpl.java:46) - ==>  Preparing: SELECT boardNm FROM board WHERE boardcd = ? 
+[2016-05-20 20:32:01,716]DEBUG [http-bio-8385-exec-1] (JakartaCommonsLoggingImpl.java:46) - ==> Parameters: free(String)
+[2016-05-20 20:32:01,742]DEBUG [http-bio-8385-exec-1] (JakartaCommonsLoggingImpl.java:46) - <==      Total: 1
+[2016-05-20 20:32:37,121]DEBUG [http-bio-8385-exec-7] (JakartaCommonsLoggingImpl.java:46) - ooo Using Connection [jdbc:oracle:thin:@127.0.0.1:1521:XE, UserName=JAVA, Oracle JDBC driver]
+[2016-05-20 20:32:37,122]DEBUG [http-bio-8385-exec-7] (JakartaCommonsLoggingImpl.java:46) - ==>  Preparing: SELECT count(*) FROM article WHERE boardcd = ? 
+[2016-05-20 20:32:37,123]DEBUG [http-bio-8385-exec-7] (JakartaCommonsLoggingImpl.java:46) - ==> Parameters: free(String)
+[2016-05-20 20:32:37,125]DEBUG [http-bio-8385-exec-7] (JakartaCommonsLoggingImpl.java:46) - <==      Total: 1
+[2016-05-20 20:32:37,128]DEBUG [http-bio-8385-exec-7] (JakartaCommonsLoggingImpl.java:46) - ooo Using Connection [jdbc:oracle:thin:@127.0.0.1:1521:XE, UserName=JAVA, Oracle JDBC driver]
+[2016-05-20 20:32:37,129]DEBUG [http-bio-8385-exec-7] (JakartaCommonsLoggingImpl.java:46) - ==>  Preparing: SELECT articleno, title, regdate, hit, name, attachfileNum, commentNum FROM ( SELECT rownum r,a.* FROM ( SELECT a.articleno, a.title, a.regdate, a.hit, m.name, COUNT(DISTINCT(f.attachfileno)) attachfileNum, COUNT(DISTINCT(c.commentno)) commentNum FROM article a, attachfile f, comments c, member m WHERE a.articleno = f.articleno(+) AND a.articleno = c.articleno(+) AND a.email = m.email(+) AND a.boardcd = ? GROUP BY a.articleno, title, a.regdate, hit, m.name ORDER BY articleno DESC ) a ) WHERE r BETWEEN ? AND ? 
+[2016-05-20 20:32:37,130]DEBUG [http-bio-8385-exec-7] (JakartaCommonsLoggingImpl.java:46) - ==> Parameters: free(String), 1(String), 10(String)
+[2016-05-20 20:32:37,135]DEBUG [http-bio-8385-exec-7] (JakartaCommonsLoggingImpl.java:46) - <==      Total: 2
+[2016-05-20 20:32:37,138]DEBUG [http-bio-8385-exec-7] (JakartaCommonsLoggingImpl.java:46) - ooo Using Connection [jdbc:oracle:thin:@127.0.0.1:1521:XE, UserName=JAVA, Oracle JDBC driver]
+[2016-05-20 20:32:37,139]DEBUG [http-bio-8385-exec-7] (JakartaCommonsLoggingImpl.java:46) - ==>  Preparing: SELECT boardNm FROM board WHERE boardcd = ? 
+[2016-05-20 20:32:37,139]DEBUG [http-bio-8385-exec-7] (JakartaCommonsLoggingImpl.java:46) - ==> Parameters: free(String)
+[2016-05-20 20:32:37,141]DEBUG [http-bio-8385-exec-7] (JakartaCommonsLoggingImpl.java:46) - <==      Total: 1
+[2016-05-20 20:33:29,806]DEBUG [http-bio-8385-exec-5] (JakartaCommonsLoggingImpl.java:46) - ooo Using Connection [jdbc:oracle:thin:@127.0.0.1:1521:XE, UserName=JAVA, Oracle JDBC driver]
+[2016-05-20 20:33:29,807]DEBUG [http-bio-8385-exec-5] (JakartaCommonsLoggingImpl.java:46) - ==>  Preparing: SELECT count(*) FROM article WHERE boardcd = ? 
+[2016-05-20 20:33:29,807]DEBUG [http-bio-8385-exec-5] (JakartaCommonsLoggingImpl.java:46) - ==> Parameters: free(String)
+[2016-05-20 20:33:29,809]DEBUG [http-bio-8385-exec-5] (JakartaCommonsLoggingImpl.java:46) - <==      Total: 1
+[2016-05-20 20:33:29,811]DEBUG [http-bio-8385-exec-5] (JakartaCommonsLoggingImpl.java:46) - ooo Using Connection [jdbc:oracle:thin:@127.0.0.1:1521:XE, UserName=JAVA, Oracle JDBC driver]
+[2016-05-20 20:33:29,812]DEBUG [http-bio-8385-exec-5] (JakartaCommonsLoggingImpl.java:46) - ==>  Preparing: SELECT articleno, title, regdate, hit, name, attachfileNum, commentNum FROM ( SELECT rownum r,a.* FROM ( SELECT a.articleno, a.title, a.regdate, a.hit, m.name, COUNT(DISTINCT(f.attachfileno)) attachfileNum, COUNT(DISTINCT(c.commentno)) commentNum FROM article a, attachfile f, comments c, member m WHERE a.articleno = f.articleno(+) AND a.articleno = c.articleno(+) AND a.email = m.email(+) AND a.boardcd = ? GROUP BY a.articleno, title, a.regdate, hit, m.name ORDER BY articleno DESC ) a ) WHERE r BETWEEN ? AND ? 
+[2016-05-20 20:33:29,813]DEBUG [http-bio-8385-exec-5] (JakartaCommonsLoggingImpl.java:46) - ==> Parameters: free(String), 1(String), 10(String)
+[2016-05-20 20:33:29,815]DEBUG [http-bio-8385-exec-5] (JakartaCommonsLoggingImpl.java:46) - <==      Total: 2
+[2016-05-20 20:33:29,817]DEBUG [http-bio-8385-exec-5] (JakartaCommonsLoggingImpl.java:46) - ooo Using Connection [jdbc:oracle:thin:@127.0.0.1:1521:XE, UserName=JAVA, Oracle JDBC driver]
+[2016-05-20 20:33:29,817]DEBUG [http-bio-8385-exec-5] (JakartaCommonsLoggingImpl.java:46) - ==>  Preparing: SELECT boardNm FROM board WHERE boardcd = ? 
+[2016-05-20 20:33:29,818]DEBUG [http-bio-8385-exec-5] (JakartaCommonsLoggingImpl.java:46) - ==> Parameters: free(String)
+[2016-05-20 20:33:29,819]DEBUG [http-bio-8385-exec-5] (JakartaCommonsLoggingImpl.java:46) - <==      Total: 1
